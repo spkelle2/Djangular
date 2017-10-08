@@ -1,0 +1,66 @@
+<html>
+    <!-- import app here -->
+    <body ng-app='scrumboard.demo'>
+        
+        {% verbatim %}
+        <!-- allow access to scope from html -->
+        <div ng-controller='ScrumboardController'>
+            <!--for each dictionary in "data" which are lists -->
+            <div ng-repeat="list in data">
+                <h3>{{ list.name  }}</h3>
+                <ul>
+                    <!-- iterate over our cards then {{}} show title -->
+                    <li ng-repeat="card in list.cards">{{ card.title }}</li>
+                </ul>
+                <!-- take in text as new_title then show new title -->
+                <input type='text' ng-model='new_title'/> {{ new_title }}
+            </div>
+        </div>
+        {% endverbatim %}
+
+        <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.min.js'></script>
+
+        <!-- .module(app name, dependencies list) -->
+        <!-- .controller(name, dependencies list includes reference to function) -->
+        <!-- person is property of scope object -->
+        <script>
+            (function(){
+                'use strict';
+                angular.module('scrumboard.demo',[])
+                    .controller('ScrumboardController',
+                                ['$scope', ScrumboardController]);
+
+                function ScrumboardController($scope) {
+                    $scope.data = [
+                        {
+                            name: 'Django demo',
+                            cards: [
+                                {
+                                    title: 'Create Models'
+                                },
+                                {
+                                    title: 'Create View'
+                                },
+                                {
+                                    title: 'Migrate Database'
+                                },
+                            ]
+                        },
+                        {
+                            name: 'Angular Demo',
+                            cards: [
+                                {
+                                    title: 'Write HTML'
+                                },
+                                {
+                                    title: 'Write JavaScript'
+                                },
+                            ]
+                        }
+                    ];
+                }
+            }());
+        </script>
+
+    </body>
+</html>
