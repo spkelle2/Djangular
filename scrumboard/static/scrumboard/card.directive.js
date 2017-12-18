@@ -15,7 +15,7 @@
         
             // controller for sending updates to database
             controller: ['$scope', '$http', function ($scope, $http) {
-                var url = 'scrumboard/cards/' + $scope.card.id + '/';
+                var url = '/scrumboard/cards/' + $scope.card.id + '/';
                 $scope.update = function () {
                     $http.put(url, $scope.card);
                 };
