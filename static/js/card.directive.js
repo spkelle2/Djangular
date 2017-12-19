@@ -9,7 +9,7 @@
 
             // where to find this directive
             // clear the cache when updating this file so it reloads
-            templateUrl: '/static/scrumboard/card.html',
+            templateUrl: '/static/html/card.html',
             
             // use as html 'Element'
             restrict: 'E',

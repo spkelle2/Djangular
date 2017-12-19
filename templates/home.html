@@ -1,0 +1,29 @@
+<!-- import js files. Don't prepend with 'static/foo/' since we call static -->
+{% load staticfiles %}
+
+<html>
+    <head>
+        <link rel='stylesheet' type='text/css'
+            href="{% static 'css/scrumboard.css' %}">
+    </head>
+    <!-- import app here -->
+    <body ng-app='scrumboard.demo'>
+        <!-- ng-route module inputs html from one of our views here -->
+        <ng-view></ng-view>
+        
+        <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.min.js'></script>
+        <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular-route.js'></script>
+        <!-- serve .js as static bc it can be served "as is" -->
+        <!-- this is where our js file is!! -->
+        
+        <!-- scrumboard controller -->
+        <script src="{% static 'js/scrumboard.js' %}"></script>
+
+        <!-- login controller -->
+        <script src="{% static 'js/login.controller.js' %}"></script>
+
+        <!-- routing for angular and token handling-->
+        <script src="{% static 'js/scrumboard.config.js' %}"></script>
+        <script src="{% static 'js/card.directive.js' %}"></script>
+    </body>
+</html>

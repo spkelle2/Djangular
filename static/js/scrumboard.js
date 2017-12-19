@@ -5,13 +5,15 @@
 
 (function(){
     'use strict';
-    angular.module('scrumboard.demo',[])
+    
+    // the []'s instantiate the module
+    angular.module('scrumboard.demo', ['ngRoute'])
         .controller('ScrumboardController',
-                    ['$scope', '$http', ScrumboardController]);
+                    ['$scope', '$http', '$location', ScrumboardController]);
     
     // pass all dependencies to our controller function in the same order
     // as they were declared above
-    function ScrumboardController($scope, $http) {
+    function ScrumboardController($scope, $http, $location) {
         
         $scope.add = function (list, title) {
             
@@ -30,6 +32,12 @@
                 alert('Could not create card');
             });            
         };
+
+        $scope.logout = function(){
+            $http.get('/auth_api/logout/').then(function () {
+                $location.url('/login');
+            });
+        }
 
         $scope.data = [];
         // get returns a 'promise'. then calls the supplied function as soon

@@ -1,0 +1,19 @@
+<div class='logout'>
+    <button ng-click='logout()'>Logout</button>
+</div>
+
+<!--for each dictionary in "data" which are lists -->
+<div class='list' ng-repeat="list in data">
+    <h3>{{ list.name }}</h3>
+    <ul>
+        <!-- iter over cards. switch ardC with ard-c in html -->
+        <li ng-repeat="card in list.cards">
+            <scrumboard-card></scrumboard-card>
+        </li>
+    </ul>
+    <!-- take in text as new_title then have button for adding it -->
+    <div class='flex'>    
+        <input type='text' ng-model='new_title'/>
+        <button ng-click='add(list, new_title)'>+</button>
+    </div>
+</div>
